@@ -18,6 +18,9 @@
   <!-- Custom styles for this template-->
   <link href="{{asset('sbadmin2/css/sb-admin-2.min.css')}}" rel="stylesheet">
 
+  <!-- Custom styles for this page -->
+  <link href="{{asset('sbadmin2/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -97,11 +100,18 @@
 
   <!-- Custom scripts for all pages-->
   <script src="{{asset('sbadmin2/js/sb-admin-2.min.js')}}"></script>
+  
+  <!-- Page level plugins -->
+  <script src="{{asset('sbadmin2/vendor/datatables/jquery.dataTables.min.js')}}"></script>
+  <script src="{{asset('sbadmin2/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="{{asset('sbadmin2/js/demo/datatables-demo.js')}}"></script>
 
   <!-- script tambahan sweet alert, bukan dari bawaan sb-admin-2 -->
   @stack('scripts')
 
-  <script src="js/swal.min.js"></script>
+  <script src="{{asset('sbadmin2/js/swal.min.js')}}"></script>
 
 </body>
 

@@ -9,7 +9,7 @@ class ArtikelModel extends Model {
 	protected $table = "artikel";
 
 	protected $fillable = [
-		'judul_artikel', 'isi_artikel', 'slug', 'tag'
+		'judul_artikel', 'isi_artikel', 'slug', 'tag', 'user_id'
 	];
 
 }

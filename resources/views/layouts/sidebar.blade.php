@@ -13,9 +13,15 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="/artikel">
         <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard</span></a>
+        <span>Data Artikel</span></a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="/artikel/create">
+        <i class="fas fa-fw fa-plus"></i>
+        <span>Tambah Artikel</span></a>
     </li>
 
     <!-- Divider -->

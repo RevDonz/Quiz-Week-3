@@ -72,7 +72,8 @@ class ArtikelController extends Controller
      */
     public function edit(Artikel $artikel)
     {
-        //
+        $user = UserModel::all();
+        return view('artikel.edit', compact('artikel', 'user'));
     }
 
     /**
@@ -84,7 +85,16 @@ class ArtikelController extends Controller
      */
     public function update(Request $request, Artikel $artikel)
     {
-        //
+        $request->validate([
+            'judul_artikel' => 'required',
+            'isi_artikel' => 'required',
+            'tag' => 'required',
+            'user_id' => 'required'
+        ]);
+        $request["slug"] = str_replace(" ", "-", strtolower($request["judul_artikel"]));
+
+        $artikel->update($request->all());
+        return redirect()->route('artikel.index')->with('success', 'Artikel Berhasil Diubah');
     }
 
     /**

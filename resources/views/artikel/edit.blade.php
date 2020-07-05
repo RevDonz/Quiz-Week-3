@@ -14,15 +14,17 @@
 	    	<div class="card-body">
 				<div class="form-group">
 					<label for="judul_artikel">Judul</label>
-					<input type="text" name="judul_artikel" id="judul_artikel" class="form-control">
+					<input type="text" name="judul_artikel" id="judul_artikel" class="form-control" value="{{ $artikel->judul_artikel }}">
 				</div>
 				<div class="form-group">
 					<label for="isi_artikel">Isi</label>
-					<textarea name="isi_artikel" id="isi_artikel" class="form-control"></textarea>
+					<textarea name="isi_artikel" id="isi_artikel" class="form-control">
+						{{ $artikel->isi_artikel }}
+					</textarea>
 				</div>
 				<div class="form-group">
 					<label for="tag">Tag</label>
-					<input type="text" name="tag" id="tag" class="form-control">
+					<input type="text" name="tag" id="tag" class="form-control" value="{{ $artikel->tag }}">
 				</div>
 				<div class="form-group">
 					<label for="user_id">User</label>

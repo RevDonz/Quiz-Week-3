@@ -61,7 +61,7 @@ class ArtikelController extends Controller
      */
     public function show(Artikel $artikel)
     {
-        //
+        return view('artikel.detail', compact('artikel'));
     }
 
     /**

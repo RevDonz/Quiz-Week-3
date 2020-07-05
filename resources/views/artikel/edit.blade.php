@@ -1,14 +1,15 @@
 @extends('layouts.master')
-@section('title', 'Tambah Artikel')
+@section('title', 'Edit Artikel')
 
 @section('content')
-    <h1 class="h3 mb-2 text-gray-800">Tambah Data Artikel</h1>
+    <h1 class="h3 mb-2 text-gray-800">Edit Data Artikel</h1>
 	
 	<div class="card shadow mb-4">
-    	<form action="/artikel" method="POST">
+    	<form action="{{ route('artikel.update', $artikel->id) }}" method="POST">
     		@csrf
+    		@method('PUT')
 	    	<div class="card-header py-3">
-	      		<h6 class="m-0 font-weight-bold text-primary">Tambah Artikel</h6>
+	      		<h6 class="m-0 font-weight-bold text-primary">Edit Artikel</h6>
 	    	</div>
 	    	<div class="card-body">
 				<div class="form-group">

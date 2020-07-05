@@ -2,45 +2,100 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\ArtikelModel;
+use App\Artikel;
 use App\Models\UserModel;
+use Illuminate\Http\Request;
 
 class ArtikelController extends Controller
 {
-	public function index() {
-		$artikel = ArtikelModel::all();
-		return view('artikel.index', compact('artikel'));
-	}
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $artikels = Artikel::all();
+		return view('artikel.index', compact('artikels'));
+    }
 
-	public function create() {
-		$user = UserModel::all();
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $user = UserModel::all();
 		return view('artikel.create', compact('user'));
-	}
+    }
 
-	public function store(Request $request) {
-		$request->validate([
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
 			'judul_artikel' => 'required',
 			'isi_artikel' => 'required',
-			'slug' => 'required',
 			'tag' => 'required',
 			'user_id' => 'required'
 		]);
-		$request["slug"] = str_replace(" ", "-", strtolower($request["slug"]));
+		$request["slug"] = str_replace(" ", "-", strtolower($request["judul_artikel"]));
 
-		$result = ArtikelModel::create($request->all());
+		$result = Artikel::create($request->all());
 
 		if ($result) {
 			return redirect()->action('ArtikelController@index');
 		}
-	}
+    }
 
-	public function show(Request $request) {
-		return view();
-	}
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Artikel  $artikel
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Artikel $artikel)
+    {
+        //
+    }
 
-	public function destroy(Request $request) {
-		$request->delete();
-		return redirect()->action('ArtikelController@index');		
-	}
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Artikel  $artikel
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Artikel $artikel)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Artikel  $artikel
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Artikel $artikel)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Artikel  $artikel
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Artikel $artikel)
+    {
+    	$artikel->delete();
+    	return redirect()->route('artikel.index')->with('success', 'Data Berhasil Dihapus');
+    }
 }

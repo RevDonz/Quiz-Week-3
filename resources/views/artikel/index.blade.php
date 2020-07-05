@@ -33,25 +33,25 @@
 			        	</tr>
 			        </thead>
           			<tbody>
-          				@foreach($artikel as $key => $data)
+          				@foreach($artikels as $key => $artikel)
             			<tr>
-              				<td>{{ $data->key+1 }}</td>
-              				<td>{{ $data->judul_artikel }}</td>
-              				<td>{{ $data->isi_artikel }}</td>
-              				<td>{{ $data->slug }}</td>
-              				<td>{{ $data->tag }}</td>
-              				<td>{{ $data->created_at }}</td>
-              				<td>{{ $data->updated_at }}</td>
+              				<td>{{ $key+1 }}</td>
+              				<td>{{ $artikel->judul_artikel }}</td>
+              				<td>{{ $artikel->isi_artikel }}</td>
+              				<td>{{ $artikel->slug }}</td>
+              				<td>{{ $artikel->tag }}</td>
+              				<td>{{ $artikel->created_at }}</td>
+              				<td>{{ $artikel->updated_at }}</td>
               				<td>
-              					<form action="/artikel/{{ $data->id_artikel }}">
-	              					<a href="/artikel/{{ $data->id_artikel }}" class="btn btn-sm btn-primary btn-circle"><i class="fas fa-eye"></i></a>
-	              					<a href="/artikel/{{ $data->id_artikel }}/edit" class="btn btn-sm btn-success btn-circle"><i class="fas fa-edit"></i></a>
-              						@csrf
-              						@method('DELETE')
-              						<button type="submit" class="btn btn-danger btn-circle btn-sm">
-              							<i class="fas fa-trash"></i>
-              						</button>
-              					</form>
+              					<form action="{{ route('artikel.destroy', $artikel->id) }}" method="post">
+	              					<a href="{{ route('artikel.show', $artikel->id) }}" class="btn btn-sm btn-primary btn-circle"><i class="fas fa-eye"></i></a>
+	              					<a href="{{ route('artikel.edit', $artikel->id) }}" class="btn btn-sm btn-success btn-circle"><i class="fas fa-edit"></i></a>
+	              						@csrf
+	              						@method('DELETE')
+	              						<button type="submit" class="btn btn-danger btn-circle btn-sm">
+	              							<i class="fas fa-trash"></i>
+	              						</button>
+	              				</form>
               				</td>
             			</tr>
             			@endforeach
